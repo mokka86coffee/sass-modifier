@@ -33,6 +33,19 @@ $setkaCnt: 5;
 
 //width divs
 
+//border sides mixin
+
+@mixin border ($sides: all, $width: 1px, $style: solid, $color: #000) {
+	@if ($sides == all) {
+		border: $width $style $color;
+	}
+	@else {		
+		border-#{$sides}: $width $style $color;
+	}
+}
+
+//border sides mixin
+
 
 $shadowClr: #000;
 
@@ -41,6 +54,7 @@ $shadowClr: #000;
 	color: $color;
 	.tr {
 		color: #eee;
+		@include border;
 		@content;
 	}
 }
