@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Spicy+Rice');
+$ff: 'Spicy Rice', cursive;
+
+//Media mixin
+
+@mixin media600 {
+	@media only screen and (max-width: 600px) {
+		@content;
+	}
+}
+
+//Media mixin
+
+//width divs
+
+$setkaCnt: 5;
+
+@for $i from 1 through $setkaCnt {
+	@if ($i%2 == 0){
+		.col-#{$i} {
+			width: (100% / $setkaCnt) * $i;
+			background-color: #fff;
+		}
+	}
+	@else {
+		.col-#{$i} {
+			width: (100% / $setkaCnt) * $i;
+			background-color: #000;
+		}
+
+	}
+}
+
+//width divs
+
+
+$shadowClr: #000;
+
+@mixin trans($color: white) {
+	transition: all 1s;
+	color: $color;
+	.tr {
+		color: #eee;
+		@content;
+	}
+}
+
+
+* {
+	box-sizing: border-box;
+	font-size: 40px;
+	font-family: $ff;
+}
+
+%button {
+	color: #888;
+	background-color: #fff;
+	border: 5px solid orange;
+	outline: none;
+	display: block;
+	margin: 50px 0;
+    box-shadow: 0 0 20px $shadowClr;
+    @include trans(red) {
+    	&--tran {
+          color: white;
+    	}
+    }
+	@include media600 {
+		& {
+			color: #000;
+		}
+		& .kk {
+			color: #ddd;
+		}
+	}
+}
+
+.button1 {
+	@extend %button;
+	padding: 20px;
+	&:active {
+		background-color: rgba(#000,.5);
+	}
+	&:hover {
+        box-shadow: 0 0 10px $shadowClr;
+        cursor: pointer;
+		color: lighten(skyblue, 20);	
+	}
+	@include media600 {
+		& {
+			color: #000;
+		}
+	}
+}
+
