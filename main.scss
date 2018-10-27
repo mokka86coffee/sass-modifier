@@ -29,6 +29,13 @@ $setkaCnt: 5;
 		}
 
 	}
+
+	.col-#{$i} {
+		color: if($i%2 == 0, orange, purple);
+		background-color: if($i%2 == 0, #fff, #000);
+		width: (100% / $setkaCnt) * $i;
+
+	}
 }
 
 //width divs
@@ -45,7 +52,6 @@ $setkaCnt: 5;
 }
 
 //border sides mixin
-
 
 $shadowClr: #000;
 
