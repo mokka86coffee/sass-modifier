@@ -13,7 +13,7 @@ $ff: 'Spicy Rice', cursive;
 
 //width divs
 
-$setkaCnt: 5;
+$setkaCnt: 6;
 
 @for $i from 1 through $setkaCnt {
 	@if ($i%2 == 0){
@@ -34,11 +34,21 @@ $setkaCnt: 5;
 		color: if($i%2 == 0, orange, purple);
 		background-color: if($i%2 == 0, #fff, #000);
 		width: (100% / $setkaCnt) * $i;
-
+		& img {
+			width: 80px;
+		}
 	}
 }
 
 //width divs
+
+@function func ($args...) {
+    $count: 0;
+	@each $arg in $args{
+	              $count: $count + $arg;
+	}
+	@return $count;
+}
 
 //border sides mixin
 
@@ -61,6 +71,7 @@ $shadowClr: #000;
 	.tr {
 		color: #eee;
 		@include border;
+		height: func(1,2,3,4);
 		@content;
 	}
 }
