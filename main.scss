@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Spicy+Rice');
+@import 'mixins';
 $ff: 'Spicy Rice', cursive;
 
 //Media mixin
@@ -8,6 +9,21 @@ $ff: 'Spicy Rice', cursive;
 		@content;
 	}
 }
+
+
+$scrSizes : (
+	sm: 500px,
+	md: 800px,
+	lg: 1000px,
+	xl: 1200px
+);
+
+@mixin mque($size) {
+   $point: map-get($scrSizes, $size);
+   @media only screen and (max-width: $point) {
+   	     @content;
+   }
+} 
 
 //Media mixin
 
@@ -35,7 +51,10 @@ $setkaCnt: 6;
 		background-color: if($i%2 == 0, #fff, #000);
 		width: (100% / $setkaCnt) * $i;
 		& img {
-			width: 80px;
+			width: 80px;			
+			@include mque(lg) {
+				width: 100%;
+			}
 		}
 	}
 }
